@@ -93,6 +93,10 @@ document.querySelectorAll('.js-add-to-cart')
 
         addedToCart.classList.add('add-to-cart-visible');
 
+        setTimeout(() => {
+          addedToCart.classList.remove('add-to-cart-visible');
+        }, 2000);
+
             document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
         });
     });
