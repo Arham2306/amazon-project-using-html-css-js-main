@@ -1,4 +1,4 @@
-import {cart} from '../data/cart.js';
+import {cart, addToCart} from '../data/cart.js';
 import { products } from '../data/products.js';
 
 let productsHTML = '';
@@ -56,26 +56,14 @@ products.forEach((product) => {
 
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
-function addToCart(productId) {
-  let matchingItem;
-        
-        cart.forEach((item) => {
-          if (productId === item.productId) {
-            matchingItem = item;
-          }
-        });
-        
-        const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
-        const quantity = Number(quantitySelector.value);
+function updateCartQuantity() {
+  let cartQuantity = 0;
 
-            if (matchingItem) {
-                matchingItem.quantity += quantity;
-            } else {
-                cart.push({
-                productId: productId,
-                quantity: quantity
-            });
-            }
+  cart.forEach((cartItem) => {
+      cartQuantity += cartItem.quantity;
+  });
+
+  document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
 }
 
 document.querySelectorAll('.js-add-to-cart')
@@ -84,12 +72,9 @@ document.querySelectorAll('.js-add-to-cart')
 
         const productId = button.dataset.productId;
         addToCart(productId);
+        updateCartQuantity();
 
-            let cartQuantity = 0;
-
-            cart.forEach((item) => {
-                cartQuantity += item.quantity;
-            });
+      
         
         
         const addedToCart = document.querySelector(`.cart-added-${productId}`);
@@ -100,6 +85,5 @@ document.querySelectorAll('.js-add-to-cart')
           addedToCart.classList.remove('add-to-cart-visible');
         }, 2000);
 
-            document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
         });
     });
