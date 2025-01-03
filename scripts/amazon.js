@@ -77,9 +77,6 @@ document.querySelectorAll('.js-add-to-cart')
       addToCart(productId);
       updateCartQuantity();
 
-
-
-
       const addedToCart = document.querySelector(`.cart-added-${productId}`);
 
       addedToCart.classList.add('add-to-cart-visible');
