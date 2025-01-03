@@ -32,7 +32,7 @@
   align-items: start;
 }
 
-input.quantity-input {
+input.qty-input {
   width: 30px;
   display: none;
 }
@@ -41,7 +41,7 @@ input.quantity-input {
   display: none;
 }
 
-.is-editing-quantity .quantity-input {
+.is-editing-quantity .qty-input {
   display: initial;
 }
 
