@@ -97,6 +97,15 @@ cart.forEach((cartItem) => {
 
 function deliveryOptionsHTML() {
   deliveryOptions.forEach((deliveryOption) => {
+    const today = dayjs();
+    const deliveryDate = today.add(
+      deliveryOption.deliveryDays,
+      'days'
+    );
+    const dateString = deliveryDate.format(
+      'dddd, MMMM D'
+    );
+
     `<div class="delivery-option">
                   <input
                     type="radio"
@@ -104,7 +113,7 @@ function deliveryOptionsHTML() {
                     name="delivery-option-${matchingProduct.id}"
                   />
                   <div>
-                    <div class="delivery-option-date">Monday, June 13</div>
+                    <div class="delivery-option-date">${dateString}</div>
                     <div class="delivery-option-price">$9.99 - Shipping</div>
                   </div>
                 </div>`
