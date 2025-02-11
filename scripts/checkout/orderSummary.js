@@ -19,6 +19,7 @@ export function renderOrderSummary() {
     const deliveryOptionId = cartItem.deliveryOptionId;
 
     const deliveryOption = getDeliveryOption(deliveryOptionId);
+    calculateCartQuantity();
 
     const today = dayjs();
     const deliveryDate = today.add(
